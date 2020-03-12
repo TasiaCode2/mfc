@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  db:
+    image: mariadb/server:10.4
+    restart: always
+
+    environment:
+      - MYSQL_HOST=localhost
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=dbmaria
+      - MYSQL_USER=canastillo
+      - MYSQL_PASSWORD=n0t13n3
+      - MYSQL_ROOT_PASSWORD=s3cr3t0
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - "./db/archivos:/var/lib/mysql"
+      - "./db/conf:/etc/mysql/conf.d"
+
+
+  phpache:
+    image: webdevops/php-apache:7.3
+
+    ports:
+        - "80:80"
+
+    volumes:
+        - "./server/app:/app"
