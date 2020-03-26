@@ -1,3 +1,3 @@
 <?php
-	phpinfo();
+	print "Update realizado con éxito"
 ?>
